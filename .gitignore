@@ -12,6 +12,7 @@ myenv
 .DS_Store
 
 # dataset
+data
 WhatsApp Chat with KGP,MTECH CSDP 2022-2024
 WhatsApp Chat with KGP,MTECH CSDP 2022-2024.zip
 kgp_chat_df.csv
