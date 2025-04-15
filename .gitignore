@@ -1,0 +1,17 @@
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore virtual environment
+myenv
+
+# Ignore Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore system files
+.DS_Store
+
+# dataset
+WhatsApp Chat with KGP,MTECH CSDP 2022-2024
+WhatsApp Chat with KGP,MTECH CSDP 2022-2024.zip
+kgp_chat_df.csv
