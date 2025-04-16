@@ -15,6 +15,10 @@ A Streamlit web app to analyze WhatsApp chat exports. Upload your `.txt` chat fi
 You can access the live version of the app here:  
 [WhatsApp Chat Analyzer](https://whatsapp-chat-analyzer-ejzcardvureev42p8ibadu.streamlit.app/)
 
+If the link is not working, copy and paste the following URL directly into your browser:
+
+https://whatsapp-chat-analyzer-ejzcardvureev42p8ibadu.streamlit.app/
+
 ## How to Use
 
 ### 1. Clone the Repository
