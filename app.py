@@ -1,11 +1,11 @@
-import sys
+#import sys
 import streamlit as st
 import preprocess
 from stats import Analysis
 import matplotlib.pyplot as plt
 import numpy as np
 
-st.write(f"Current Python executable: {sys.executable}")
+#st.write(f"Current Python executable: {sys.executable}")
 
 st.sidebar.title("Whatsapp Chat Analyzer")
 
