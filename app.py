@@ -140,7 +140,7 @@ if __name__ == '__main__':
 
 
                     # phase 6: Monthly timeline
-                    st.title('Mothly Timeline')
+                    st.title('Monthly Timeline')
                     weekActivityMap, monthActivityMap, monthTimeline = analyst_obj.weekActivityMap_monthActivityMap_monthTimeline()
                     fig, ax = plt.subplots()
                     ax.plot(monthTimeline['month'], monthTimeline['Message'],color='green')
