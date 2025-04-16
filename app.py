@@ -1,11 +1,11 @@
-#import sys
+# import sys
 import streamlit as st
 import preprocess
 from stats import Analysis
 import matplotlib.pyplot as plt
 import numpy as np
 
-#st.write(f"Current Python executable: {sys.executable}")
+# st.write(f"Current Python executable: {sys.executable}")
 
 st.sidebar.title("Whatsapp Chat Analyzer")
 
@@ -20,6 +20,30 @@ def prepare_user_list(df):
     user_list.insert(0,'Overall')
     return user_list 
 
+def display_file_none_message():
+    st.title(
+            """
+            **Welcome!**
+
+            Please upload your exported WhatsApp **`.txt` chat file** to begin the analysis.
+            
+            We'll help you explore messages, word counts, and much more!
+            """
+        )
+    st.error("You haven't selected any file yet. Please upload a .txt chat file.")
+
+def display_wrong_file_format_message():
+    st.title(
+            """
+            **Welcome!**
+
+            Please upload your exported WhatsApp **`.txt` chat file** to begin the analysis.
+            
+            We'll help you explore messages, word counts, and much more!
+            """
+        )
+    st.error("🚫 Invalid file type. Please upload a WhatsApp-exported `.txt` file.")
+
 
 if __name__ == '__main__':
     # Upload file
@@ -27,30 +51,12 @@ if __name__ == '__main__':
 
     # Check if no file uploaded
     if uploaded_file is None:
-        st.title(
-            """
-            **Welcome!**
-
-            Please upload your exported WhatsApp **`.txt` chat file** to begin the analysis.
-            
-            We'll help you explore messages, word counts, and much more!
-            """
-        )
-        st.error("🚫 You haven't selected any file yet. Please upload a .txt chat file.")
-    
+        display_file_none_message()
+        
     # If wrong file type
     elif file_format(uploaded_file) != 'txt':
-        st.title(
-            """
-            **Welcome!**
-
-            Please upload your exported WhatsApp **`.txt` chat file** to begin the analysis.
-            
-            We'll help you explore messages, word counts, and much more!
-            """
-        )
-        st.error("🚫 Invalid file type. Please upload a WhatsApp-exported `.txt` file.")
-
+        display_wrong_file_format_message()
+        
     # Valid file uploaded
     else:
         try:
@@ -58,19 +64,21 @@ if __name__ == '__main__':
             if not data:
                 st.error("🚫 The uploaded file is empty.")
             else:
-                st.success("✅ File uploaded successfully!")
-
+                # prepare the dataframe from raw txt data
                 df = preprocess.preprocess(data)
-                
-                if st.checkbox("🔍 Show full chat content"):
-                    st.dataframe(df)
-
+    
                 # We need to organize the analysis based on the selected user
                 user_list = prepare_user_list(df)
                 selected_user = st.sidebar.selectbox("Show analysis with respect to", user_list)
-
-                st.title('Whatsapp Chat Analysis for ' + selected_user)
-                if st.sidebar.button("Show Analysis"):
+                if not st.sidebar.button("Show Analysis"):
+                    st.success("✅ File uploaded successfully!")
+                    if st.checkbox("Show full chat content"):
+                        st.dataframe(df)
+                else:
+                    if st.checkbox("Show full chat content"):
+                        st.dataframe(df)
+                    
+                    st.title('Whatsapp Chat Analysis for ' + selected_user)
                     analyst_obj = Analysis(selected_user,df)
 
                     # basic stats
