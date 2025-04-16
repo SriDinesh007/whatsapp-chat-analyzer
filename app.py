@@ -134,10 +134,13 @@ if __name__ == '__main__':
                     # phase 5: Emoji analysis
                     st.title('Emoji Analysis')
                     emojicount = list(emoji_df['Count'])
-                    perlist = [(i/sum(emojicount))*100 for i in emojicount]
+                    total = sum(emojicount)
+                    if total>0:
+                        perlist = [(i/total)*100 for i in emojicount]
+                    else:
+                        perlist = [0]*len(emojicount)
                     emoji_df['Percentage use'] = np.array(perlist)
                     st.dataframe(emoji_df)
-
 
                     # phase 6: Monthly timeline
                     st.title('Monthly Timeline')
