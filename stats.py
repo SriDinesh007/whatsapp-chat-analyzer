@@ -53,7 +53,7 @@ class Analysis:
         wc_image = wc.generate(common_words_df[0].str.cat(sep=" "))
         return wc_image
 
-    def get_commmon_words_and_word_cloud(self):
+    def get_common_words_and_word_cloud(self):
         with open('stop_hinglish.txt','r',encoding='utf-8') as file:
             stopwords = file.read()
         
