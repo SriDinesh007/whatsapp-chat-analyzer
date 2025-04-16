@@ -118,7 +118,7 @@ if __name__ == '__main__':
                     # phase 3: word cloud
                     
                     st.title('Word Cloud')
-                    most_common_words_df, wc_image = analyst_obj.get_commmon_words_and_word_cloud()
+                    most_common_words_df, wc_image = analyst_obj.get_common_words_and_word_cloud()
                     fig,ax = plt.subplots()
                     ax.imshow(wc_image)
                     st.pyplot(fig)
